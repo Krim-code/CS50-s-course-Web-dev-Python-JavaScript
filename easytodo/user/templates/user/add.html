@@ -1,0 +1,13 @@
+{% extends "user/layout.html" %}
+
+{% block body %}
+  <h1 class="text-white">
+    Add Task
+  </h1>
+  <form method="post">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="append" class="btn btn-success">
+  </form>
+  <a href="{% url 'index' %}">Come back</a>
+{% endblock %}

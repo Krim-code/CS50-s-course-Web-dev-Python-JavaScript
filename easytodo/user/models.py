@@ -9,4 +9,4 @@ class Dashboard(models.Model):
     user = models.ForeignKey(User, blank=True, null=False,on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.tasks} from {self.user}"
+        return f"{self.tasks}"
