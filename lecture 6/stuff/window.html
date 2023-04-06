@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      height: 10000px;
+    }
+  </style>
+  <script>
+      window.onscroll = ()=> {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+          document.querySelector('body').style.background = 'red'
+        } else {
+          document.querySelector('body').style.background = 'white'
+        }
+      }
+  </script>
+</head>
+<body>
+</body>
+</html>
