@@ -30,6 +30,7 @@ button:hover {
 }
 
 .buttons{
+
     display: flex;
     justify-content: center;
 }
