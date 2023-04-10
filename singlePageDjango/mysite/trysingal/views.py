@@ -25,7 +25,7 @@ def api(request, page):
 
 
 def scroll(request):
-    pass
+    return render(request, "single/scroll.html")
 
 
 def scroll_gen(request, page):
