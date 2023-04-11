@@ -15,12 +15,14 @@ class WomenAPIView(APIView):
         return Response({'posts':WomenSerializer(lst, many=True).data})
 
     def post(self, request):
+        serializer = WomenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
         post_new = Women.objects.create(
             title = request.data['title'],
             content = request.data['content'],
             cat_id = request.data['cat_id']
         )
-        return Response({'post':WomenSerializer(post_new)})
+        return Response({'post':WomenSerializer(post_new).data})
 
 # class WomenAPIView(generics.ListAPIView):
 #     queryset = Women.objects.all()

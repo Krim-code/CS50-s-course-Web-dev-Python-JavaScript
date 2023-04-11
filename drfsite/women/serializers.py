@@ -11,8 +11,12 @@ from .models import Women
 
 
 class WomenSerializer(serializers.Serializer):
-    title = serializers.CharField(max_length=255),
+    title = serializers.CharField(max_length=255)
     content = serializers.CharField()
+    time_created = serializers.DateTimeField(read_only=True)
+    time_updated = serializers.DateTimeField(read_only=True)
+    is_published = serializers.BooleanField(default=True)
+    cat_id = serializers.IntegerField()
 
 
 # def encode():
