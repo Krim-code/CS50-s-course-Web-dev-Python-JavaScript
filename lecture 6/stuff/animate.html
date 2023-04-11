@@ -4,24 +4,49 @@
     <meta charset="UTF-8">
     <title>Animate</title>
   <style>
-    @keyframes grow {
-      from {
-        font-size:20px;
-        color:deeppink;
+    @keyframes move {
+      0% {
+        color: deeppink;
+        left:0;
       }
-      to {
-        font-size:60px;
-        color: red;
+      50% {
+          color: aqua;
+        left:50%;
+
       }
+
+      100%{
+          color: deeppink;
+        left: 0%;
+      }
+
     }
     h1 {
-      animation-name: grow;
-      animation-duration: 2s;
+      position:relative;
+      animation-name: move;
+      animation-duration: 10s;
       animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+
     }
   </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const h1 = document.querySelector('h1')
+            h1.style.animationPlayState = 'paused';
+            document.querySelector('button').onclick = () =>{
+                if (h1.style.animationPlayState === 'paused'){
+                    h1.style.animationPlayState = 'running';
+                }
+                else{
+                    h1.style.animationPlayState = "paused";
+                }
+            }
+        })
+    </script>
 </head>
 <body>
+    <button>Click here !</button>
     <h1>Welcome!</h1>
 </body>
 </html>
