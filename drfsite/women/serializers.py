@@ -18,6 +18,20 @@ class WomenSerializer(serializers.Serializer):
     is_published = serializers.BooleanField(default=True)
     cat_id = serializers.IntegerField()
 
+    def create(self, validated_data):
+        return Women.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.title = validated_data.get('title', instance.title)
+        instance.content = validated_data.get('content', instance.content)
+        instance.time_created = validated_data.get("time_created", instance.time_created)
+        instance.time_updated = validated_data.get('time_updated', instance.time_updated)
+        instance.is_published = validated_data.get('is_published', instance.is_published)
+        instance.cat_id = validated_data.get('cat_id', instance.cat_id)
+        instance.save()
+        return instance
+
+
 
 # def encode():
 #     model = WomenModel('Revi', 'Content: Revi')
@@ -25,4 +39,3 @@ class WomenSerializer(serializers.Serializer):
 #     print(model_sr.data, type(model_sr.data), sep='\n')
 #     json = JSONRenderer().render(model_sr.data)
 #     print(json)
-
