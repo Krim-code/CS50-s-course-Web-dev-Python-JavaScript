@@ -5,7 +5,7 @@ from .views import *
 from rest_framework import routers
 
 router = routers.SimpleRouter()
-router.register(r'women',WomenViewSet)
+router.register(r'women',WomenViewSet, basename="women")
 
 urlpatterns = [
 
