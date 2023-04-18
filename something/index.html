@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    class Test{
+        title = 'Test Title'
+        type = 'text/javascript'
+      constructor(){
+        this.show()
+      }
+      show() {
+          const body = document.body
+          const h1 = document.createElement('h1')
+          const p = document.createElement('p')
+
+          h1.innerHTML = this.title
+          p.innerHTML = this.type
+
+          body.appendChild(h1)
+          body.appendChild(p)
+      }
+    }
+    addEventListener('DOMContentLoaded',()=>{
+      const headings = document.querySelector('h1')
+      document.querySelector('button').onclick = () =>{
+        headings.innerHTML === "hello"?
+              headings.innerHTML = "Go Fuck yourself" :
+              headings.innerHTML = "hello"}
+      Test = new Test()
+    })
+  </script>
+</head>
+<body>
+  <h1>Title</h1>
+<button>Click me</button>
+</body>
+</html>
