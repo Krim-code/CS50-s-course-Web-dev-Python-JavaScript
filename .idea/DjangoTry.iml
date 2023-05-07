@@ -7,4 +7,14 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (pythonProject) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="TemplatesService">
+    <option name="templateFileTypes">
+      <list>
+        <option value="HTML" />
+        <option value="requirements.txt" />
+        <option value="XHTML" />
+        <option value="XML" />
+      </list>
+    </option>
+  </component>
 </module>
