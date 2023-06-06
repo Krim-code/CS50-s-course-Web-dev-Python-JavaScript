@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      body{
+        display: flex;
+        background: linear-gradient(#e66465, #9198e5)  ;
+        font-family:Roboto, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #app{
+
+        text-align: center;
+      }
+      #app{
+        color: white;
+        font-size: 45px;
+        text-align: center;
+      }
+      input{
+        width: 200px;
+        margin-bottom:15px;
+      }
+
+    </style>
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+      function App(){
+
+        const [state,setState] = React.useState(
+                {
+                  num1: 1,
+                  num2: 2,
+                  response: '',
+                  score:0
+                }
+        )
+        const updateResponse = (event) => {
+            setState({
+              ...state,
+              response: event.target.value
+            })
+        }
+        function inputKeyPress(event){
+          if (event.key === 'Enter'){
+            const answer = parseInt(state.response)
+            if (state.num1+state.num2 === answer){
+              setState({
+                  ...state,
+                  num1: Math.ceil(Math.random() * 10),
+                  num2: Math.ceil(Math.random() * 10),
+                  response: '',
+                  score: state.score + 1
+              })
+            }
+            else{
+               setState({
+                  ...state,
+                  response: '',
+                  score: state.score -1
+              })
+            }
+          }
+        }
+          return(
+              <div>
+                <label>
+                  <div>{state.num1} + {state.num2}</div>
+                  <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response}/>
+                </label>
+                <h4>Score : {state.score}</h4>
+              </div>
+          )
+      }
+
+      ReactDOM.render(<App/>, document.querySelector('#app'));
+
+    </script>
+</body>
+</html>
