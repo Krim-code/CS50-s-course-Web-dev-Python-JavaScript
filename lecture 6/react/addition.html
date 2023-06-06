@@ -31,6 +31,12 @@
         width: 200px;
         margin-bottom:15px;
       }
+      .incorrect{
+        color: red;
+      }
+      .correct{
+        color: green;
+      }
 
     </style>
     <title>Title</title>
@@ -46,7 +52,8 @@
                   num1: 1,
                   num2: 2,
                   response: '',
-                  score:0
+                  score:0,
+                  className: 'default'
                 }
         )
         const updateResponse = (event) => {
@@ -64,25 +71,30 @@
                   num1: Math.ceil(Math.random() * 10),
                   num2: Math.ceil(Math.random() * 10),
                   response: '',
-                  score: state.score + 1
+                  score: state.score + 1,
+                  className: 'correct'
               })
             }
             else{
                setState({
                   ...state,
                   response: '',
-                  score: state.score -1
+                  score: state.score -1,
+                  className: 'incorrect'
               })
             }
           }
         }
+        if (state.score === 5){
+          return(<div>You won!</div>)
+        }
           return(
               <div>
                 <label>
-                  <div>{state.num1} + {state.num2}</div>
+                  <div >{state.num1} + {state.num2}</div>
                   <input autoFocus={true} onKeyPress={inputKeyPress} onChange={updateResponse} value={state.response}/>
                 </label>
-                <h4>Score : {state.score}</h4>
+                <h5 className={state.className}>Score : {state.score}</h5>
               </div>
           )
       }
