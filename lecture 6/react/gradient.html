@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      body{
+        display: flex;
+          font-family:Roboto, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+          /*background: linear-gradient(#e66465, #9198e5) no-repeat fixed;*/
+          flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #app{
+        text-align: center;
+      }
+      #app{
+        color: white;
+        font-size: 45px;
+        text-align: center;
+      }
+      .style1{
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          width: 100px;
+          height: 100px;
+          background-color: transparent;
+          cursor: pointer;
+          border-radius: 74px;
+          border: none;
+      }
+      .style1::-webkit-color-swatch {
+        border-radius: 25px;
+          border: none;
+      }
+      input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 25rem;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #fcfcfc;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -4px; /* Centers thumb on the track */
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  outline: 3px solid #ffffff;
+  outline-offset: 0.125rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #fcfcfc;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #ffffff;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+input[type="range"]:focus::-moz-range-thumb{
+  outline: 3px solid #ffffff;
+  outline-offset: 0.125rem;
+}
+
+    </style>
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+      function Gradient(props) {
+          const [color,setColor] = React.useState({
+              firstColor: '#e66465',
+              secondColor: '#9198e5',
+              range: 180
+
+          })
+          document.querySelector('body').style.backgroundImage = `linear-gradient(${color.range}deg, ${color.firstColor}, ${color.secondColor})`
+          return(
+
+              <div>
+                  <h6>{props.title}</h6>
+                  <div className="container">
+                          <input type="color"
+                                 value={color.firstColor}
+                                 onChange={(event) => setColor({...color, firstColor: event.target.value})}
+                                 className="style1"
+                          />
+
+                      <input type="color"
+                             value={color.secondColor}
+                             onChange={(event) => setColor({...color, secondColor: event.target.value})}
+                             className="style1"
+                      />
+                  </div>
+                   <input type='range'
+                          value={color.range}
+                          min="0"
+                          max="360"
+                          onChange={(event) => setColor({...color,range: event.target.value})}
+                   />
+                  <div className="dashboard">
+                      <p>{color.range}&#176;</p>
+                      <p>{color.firstColor}</p>
+                      <p>{color.secondColor}</p>
+
+                  </div>
+
+              </div>
+          )
+      }
+      function App(){
+          return(
+              <div>
+                <Gradient title = "Please choose colors of gradient "/>
+              </div>
+          )
+      }
+
+      ReactDOM.render(<App/>, document.querySelector('#app'));
+
+    </script>
+</body>
+</html>
